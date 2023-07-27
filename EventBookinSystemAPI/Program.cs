@@ -5,13 +5,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using OnlineTicketBookingDataAccess.Data;
-
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionstring = builder.Configuration.GetConnectionString("DefaultSQLConnection");
+var ConnectionStrings = builder.Configuration.GetConnectionString("DefaultSQLConnection");
 // Add services to the container.
-builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionstring));
+builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(ConnectionStrings));
 // Add services to the container.
 builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddScoped<ITicketBookingRepository, TicketBookingRepository>();

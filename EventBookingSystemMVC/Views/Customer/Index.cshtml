@@ -1,33 +1,30 @@
-﻿
-@model IEnumerable<EventTicketBookingSystemMVC.Models.TicketBookingViewModel>
+﻿@model IEnumerable<EventTicketBookingSystemMVC.Models.CustomerViewModel>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>TicketBookingList</h1>
+<h1>CustomerBookingList</h1>
 
 <p>
     <a asp-action="CreateBooking">Create New</a>
 </p>
 
-
-
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                @Html.DisplayNameFor(model => model.CustomerName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CustomerEmail)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NumberOfTickets)
+                @Html.DisplayNameFor(model => model.Password)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EventId)
+                @Html.DisplayNameFor(model => model.Role)
             </th>
             <th></th>
         </tr>
@@ -37,22 +34,21 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Id)
+                    @Html.DisplayFor(modelItem => item.CustomerName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CustomerEmail)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.NumberOfTickets)
+                    @Html.DisplayFor(modelItem => item.Password)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EventId)
+                    @*@Html.DisplayFor(modelItem => item.Role)*@
                 </td>
                 <td>
-                    <a type="button" class="btn btn-success" asp-action="Details" asp-route-id="@item.Id" asp-controller="TicketBooking">Details</a>
+                    <a type="button" class="btn btn-success" asp-action="Details" asp-route-id="@item.CustomerName" asp-controller="TicketBooking">Details</a>
                 </td>
             </tr>
         }
     </tbody>
-</table>}
-    
+</table>

@@ -11,6 +11,6 @@ namespace EventTicketBookingSystemMVC.Models
         public string CustomerEmail { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
-    
-}
+
+    }
 }

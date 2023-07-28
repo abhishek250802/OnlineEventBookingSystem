@@ -63,26 +63,26 @@ namespace EventTicketBookingSystemMVC.Controllers
             TempData["success"] = "Event deleted successfully";
             return RedirectToAction("Index");
         }
-        //#region API CALLS
+        #region API CALLS
 
-        //[HttpGet]
-        //public async Task<IActionResult> GetAll()
-        //{
-            
-        //    List<EventViewModel> list = new();
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
 
-        //    var response = await _eventService.GetAllAsync<APIResponse>();
+            List<EventViewModel> list = new();
 
-        //    if (response != null)
-        //    {
-        //        list = JsonConvert.DeserializeObject<List<EventViewModel>>(Convert.ToString(response.Result));
-        //    }
-            
-        //    return Json(new { data = list });
+            var response = await _eventService.GetAllAsync<APIResponse>();
+
+            if (response != null)
+            {
+                list = JsonConvert.DeserializeObject<List<EventViewModel>>(Convert.ToString(response.Result));
+            }
+
+            return Json(new { data = list });
 
 
-        //}
+        }
 
-        //#endregion
+        #endregion
     }
 }

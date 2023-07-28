@@ -1,19 +1,53 @@
-﻿using EventTicketBookingSystemMVC.Service.IService;
+﻿using EventTicketBookingSystemData.Model; // Make sure to import the Customer model
+using EventTicketBookingSystemMVC.Models; // Make sure to import the CustomerViewModel
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace EventTicketBookingSystemMVC.Controllers
 {
     public class CustomerController : Controller
     {
-        private readonly ICustomerService _customerService;
+        private readonly HttpClient _httpClient;
 
-        public CustomerController(ICustomerService customerService)
+        public CustomerController(IHttpClientFactory httpClientFactory)
         {
-            _customerService=customerService;
+            _httpClient = httpClientFactory.CreateClient(); // Create a new HttpClient instance through DI
+            _httpClient.BaseAddress = new Uri("https://localhost:7264"); // Set the base address of your API
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-        public IActionResult Index()
+
+        public async Task<IActionResult> Index()
         {
-            return View();
+            List<CustomerViewModel> customersViewModel = new List<CustomerViewModel>();
+
+            // Call the API to get customer data
+            HttpResponseMessage response = await _httpClient.GetAsync("/api/Customer");
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResult = await response.Content.ReadAsStringAsync();
+                List<Customer> customers = JsonSerializer.Deserialize<List<Customer>>(jsonResult);
+                customersViewModel = customers.Select(c => MapToViewModel(c)).ToList();
+            }
+
+            return View(customersViewModel);
+        }
+
+        private CustomerViewModel MapToViewModel(Customer customer)
+        {
+            // Implement your mapping logic here to map Customer to CustomerViewModel
+            return new CustomerViewModel
+            {
+                CustomerName = customer.CustomerName,
+                CustomerEmail = customer.CustomerEmail,
+                Password = customer.Password,
+                // Map other properties as needed
+            };
         }
     }
 }

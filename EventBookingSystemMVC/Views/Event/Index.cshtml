@@ -1,0 +1,113 @@
+﻿
+@model IEnumerable<EventTicketBookingSystemMVC.Models.EventViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>EventList</h1>
+
+@*<p>
+    <a asp-action="AddCourse">Create New Event</a>
+</p>*@
+@if (User.IsInRole("Admin"))
+{
+    <div class="col text-end pt-1">
+        <a asp-controller="Event" asp-action="AddCourse" class="btn btn-outline-primary">Create New Event</a>
+    </div>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EventId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailableSeats)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventDescription)
+                </td>
+                <td>
+                    @Convert.ToString(item.EventDate.ToString("dd-mm-yyyy"))
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AvailableSeats)
+                </td>
+                <td>
+                    <a type="button" class="btn btn-success" asp-action="CreateBooking" asp-route-eventid="@item.EventId" asp-controller="TicketBooking">Book</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a type="button" class="btn btn-success" asp-action="editpage" asp-route-id="@item.EventId" asp-controller="Event">Update</a>
+
+                        <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.EventId" asp-controller="Event">Delete</a>
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+        <div class="col-lg-4">
+            <div class="card card-margin">
+                <div class="card-header no-border">
+                    <h5 class="card-title">@item.EventName</h5>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="widget-49">
+                        <div class="widget-49-title-wrapper">
+                            <div class="widget-49-date-primary">
+                                    <span class="widget-49-date-day"> @Convert.ToString(item.EventDate.ToString("dd"))</span>
+                                    <span class="widget-49-date-month"> @Convert.ToString(item.EventDate.ToString("mmm"))</span>
+                            </div>
+                            <div class="widget-49-meeting-info">
+                                <span class="widget-49-pro-title">@item.Location</span>
+
+                            </div>
+                        </div>
+                      Available Seat :@item.AvailableSeats
+                        <div class="widget-49-meeting-action">
+                            <a href="#" class="btn btn-sm btn-flash-border-primary">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> }
+    </div>
+</div>

@@ -1,6 +1,7 @@
 ﻿using EventTicketBookingSystemData.Model; // Make sure to import the Customer model
 using EventTicketBookingSystemMVC.Models; // Make sure to import the CustomerViewModel
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -31,7 +32,7 @@ namespace EventTicketBookingSystemMVC.Controllers
             if (response.IsSuccessStatusCode)
             {
                 var jsonResult = await response.Content.ReadAsStringAsync();
-                List<Customer> customers = JsonSerializer.Deserialize<List<Customer>>(jsonResult);
+                List<Customer> customers = JsonConvert.DeserializeObject<List<Customer>>(jsonResult);
                 customersViewModel = customers.Select(c => MapToViewModel(c)).ToList();
             }
 

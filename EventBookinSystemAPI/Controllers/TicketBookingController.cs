@@ -5,7 +5,7 @@ using OnlineTicketBookingDataAccess.Data;
 
 namespace EventTicketBookingSystemAPI.Controllers
 {
-      [Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     
     public class TicketBookingController : ControllerBase

@@ -1,5 +1,6 @@
 ﻿using EventTicketBookingSystemData.Model;
 using EventTicketBookingSystemData.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineTicketBookingDataAccess.Data;
 
@@ -7,6 +8,7 @@ namespace EventTicketBookingSystemAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
   
     public class CustomerController : ControllerBase
     {
@@ -62,7 +64,7 @@ namespace EventTicketBookingSystemAPI.Controllers
 
 
 
-        [HttpGet]
+        [HttpGet] 
        
         public IActionResult Get()
         {

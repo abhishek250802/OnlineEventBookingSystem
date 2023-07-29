@@ -1,4 +1,5 @@
-﻿@model IEnumerable<EventTicketBookingSystemMVC.Models.CustomerViewModel>
+﻿@using EventTicketBookingSystemMVC.Models;
+@model IEnumerable<CustomerViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -43,7 +44,7 @@
                     @Html.DisplayFor(modelItem => item.Password)
                 </td>
                 <td>
-                    @*@Html.DisplayFor(modelItem => item.Role)*@
+                    @Html.DisplayFor(modelItem => item.Role)
                 </td>
                 <td>
                     <a type="button" class="btn btn-success" asp-action="Details" asp-route-id="@item.CustomerName" asp-controller="TicketBooking">Details</a>

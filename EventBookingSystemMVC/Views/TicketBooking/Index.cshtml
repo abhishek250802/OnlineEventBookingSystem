@@ -1,4 +1,4 @@
-﻿
+﻿@*
 @model IEnumerable<EventTicketBookingSystemMVC.Models.TicketBookingViewModel>
 
 @{
@@ -55,4 +55,65 @@
         }
     </tbody>
 </table>}
-    
+    *@
+@model IEnumerable<EventTicketBookingSystemMVC.Models.TicketBookingViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>TicketBookingList</h1>
+
+<p>
+    <a asp-action="CreateBooking">Create New</a>
+</p>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustomerEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumberOfTickets)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EventId)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CustomerEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumberOfTickets)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EventId)
+                    </td>
+                    <td>
+                        <a type="button" class="btn btn-success" asp-action="Details" asp-route-id="@item.Id" asp-controller="TicketBooking">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No ticket bookings found.</p>
+}

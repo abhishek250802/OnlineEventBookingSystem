@@ -28,14 +28,10 @@ namespace EventTicketBookingSystemData.Repository
         public Event GetbyId(int Id)
         {
 
-
             return _db.Events.FirstOrDefault(u => u.EventId == Id);
-
-
 
         }
         
-
 
         public void Delete(Event entity)
         {

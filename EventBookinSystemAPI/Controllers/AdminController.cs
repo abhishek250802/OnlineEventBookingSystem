@@ -25,21 +25,21 @@ namespace EventTicketBookingSystemAPI.Controllers
             _dbContext = databaseContext;
 
         }
-        [HttpGet]
-        public IActionResult GetAllApprovalsRejections()
-        {
-            IEnumerable<Event> model = _eventRepository.Get(u => u.IsApproved == false && u.IsRejected == false);
-            if (model == null)
-            {
-                return NotFound();
+        [HttpGet]
+        public IActionResult GetAllApprovalsRejections()
+        {
+            IEnumerable<Event> model = _eventRepository.Get(u => u.IsApproved == false && u.IsRejected == false);
+            if (model == null)
+            {
+                return NotFound();
 
-            }
-            else
-            {
-                return Ok(model);
-            }
+            }
+            else
+            {
+                return Ok(model);
+            }
 
-        }
+        }
         [HttpGet]
         public IActionResult ApproveEvent(int id)
         {

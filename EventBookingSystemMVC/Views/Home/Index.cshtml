@@ -1,8 +1,18 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">My Events</h1>
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+        <img src="images/b.png" alt="" class="img-fluid" style="width: 200px; margin: 10px;" />
+        <img src="images/d.png" alt="" class="img-fluid" style="width: 200px; margin: 10px;" />
+        <img src="images/p.png" alt="" class="img-fluid" style="width: 200px; margin: 10px;" />
+    </div>
+    <p>
+        <button class="btn btn-primary" style="padding: 10px 20px; font-size: 16px;" 
+        asp-action="Index" asp-controller="Event">Learn More</button>
+    </p>
 </div>
+

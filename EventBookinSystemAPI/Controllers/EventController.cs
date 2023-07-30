@@ -42,6 +42,8 @@ namespace EventTicketBookingSystemAPI.Controllers
         {
 
             _eventRepository.Create(Event);
+            Event.IsApproved = true;
+            Event.IsRejected = false;
             _eventRepository.Save();
             return Ok();
         }

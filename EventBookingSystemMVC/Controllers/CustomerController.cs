@@ -52,11 +52,3 @@ namespace EventTicketBookingSystemMVC.Controllers
         }
     }
 }
-
-
-
-
-
-
-
-

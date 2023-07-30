@@ -28,7 +28,7 @@ namespace EventTicketBookingSystemMVC.Controllers
             return View(list);
         }
 
-        public IActionResult AddCourse()
+        public IActionResult AddEvent()
         {
             return View();
         }
@@ -44,7 +44,7 @@ namespace EventTicketBookingSystemMVC.Controllers
             var response= _eventService.Getbyid<APIResponse>(id);
             var data = Convert.ToString(response.Result.Result);
             if (response != null) {
-                EventViewModel eventViewModel   = JsonConvert.DeserializeObject<EventViewModel>(data);
+                EventViewModel eventViewModel=JsonConvert.DeserializeObject<EventViewModel>(data);
                 return View(eventViewModel);
             }
 

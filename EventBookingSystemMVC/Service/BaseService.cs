@@ -7,8 +7,6 @@ namespace EventTicketBookingSystemMVC.Service
 {
       public class BaseService : IBaseService
   
-
-
     {
         public APIResponse responseModel { get; set; }
         public IHttpClientFactory httpClient { get; set; }

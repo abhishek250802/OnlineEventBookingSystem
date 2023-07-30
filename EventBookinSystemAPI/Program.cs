@@ -1,3 +1,4 @@
+using EventTicketBookingSystemData.Model;
 using EventTicketBookingSystemData.Repository;
 using EventTicketBookingSystemData.Repository.IRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -12,7 +13,7 @@ var ConnectionStrings = builder.Configuration.GetConnectionString("DefaultSQLCon
 // Add services to the container.
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(ConnectionStrings));
 // Add services to the container.
-builder.Services.AddScoped<IEventRepository, EventRepository>();
+builder.Services.AddScoped<IEventRepository<Event>, EventRepository>();
 builder.Services.AddScoped<ITicketBookingRepository, TicketBookingRepository>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 var key = builder.Configuration.GetValue<string>("ApiSettings:Secret");

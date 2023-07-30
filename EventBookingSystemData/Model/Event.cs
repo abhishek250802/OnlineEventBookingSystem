@@ -20,5 +20,7 @@ namespace EventTicketBookingSystemData.Model
         public string Location { get; set; }
         [Range(0, int.MaxValue, ErrorMessage = "Available Seats must be a non-negative number.")]
         public int AvailableSeats { get; set; }
+        public bool IsApproved { get; set; }
+        public bool IsRejected { get; set; }
     }
 }

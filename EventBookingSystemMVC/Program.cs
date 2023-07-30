@@ -31,6 +31,7 @@ builder.Services.AddHttpClient<ITicketBookingService, TicketBookingService>();
 builder.Services.AddScoped<ITicketBookingService, TicketBookingService>();
 builder.Services.AddHttpClient<ICustomerService, CustomerService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IApprovalService, ApprovalService>();
 
 
 

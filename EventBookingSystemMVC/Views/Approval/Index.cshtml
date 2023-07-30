@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Event>
+
+<h2>Approval/Rejection</h2>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Course Name</th>
+                <th>Course Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var course in Model)
+            {
+                <tr>
+                    <td>@course.EventName</td>
+                    <td>@course.EventDescription</td>
+                    <td>
+                        <form asp-action="ApproveEvent" method="post">
+
+                            <input type="hidden" name="id" value="@course.EventId" />
+                            <button type="submit">Approve</button>
+                        </form>
+                        <form asp-action="RejectCourse" method="post">
+                            <input type="hidden" name="id" value="@course.EventId" />
+                            <button type="submit">Reject</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No Courses found.</p>
+}

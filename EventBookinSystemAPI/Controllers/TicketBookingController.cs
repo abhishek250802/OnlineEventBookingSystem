@@ -12,10 +12,10 @@ namespace EventTicketBookingSystemAPI.Controllers
     {
         private readonly DatabaseContext _databaseContext;
         private readonly ITicketBookingRepository _ticketBookingRepository;
-        private readonly IEventRepository _eventRepository;
+        private readonly IEventRepository<Event> _eventRepository;
         protected ApiResponse _response;
 
-        public TicketBookingController(DatabaseContext databaseContext, ITicketBookingRepository ticketBookingRepository,IEventRepository eventRepository)
+        public TicketBookingController(DatabaseContext databaseContext, ITicketBookingRepository ticketBookingRepository,IEventRepository<Event> eventRepository)
         {
             _databaseContext=databaseContext;
             _ticketBookingRepository=ticketBookingRepository;

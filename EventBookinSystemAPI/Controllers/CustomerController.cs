@@ -79,7 +79,7 @@ namespace EventTicketBookingSystemAPI.Controllers
             _response.Result=data;
             return Ok(_response);
         }
-        //[HttpPost]
+        [HttpPost]
         //public IActionResult Create(Customer customer)
         //{
 

@@ -8,7 +8,7 @@ namespace EventTicketBookingSystemAPI.Controllers
 { 
    // [Route("api/[action]")]
     [Route("api/Approval/[action]")]
-
+    
     [ApiController]
     
         
@@ -32,7 +32,7 @@ namespace EventTicketBookingSystemAPI.Controllers
         [HttpGet]
         public IActionResult GetAllApprovalsRejections()
         {
-            IEnumerable<Event> model = _eventRepository.Get(u => u.IsApproved == false && u.IsRejected == false);
+            IEnumerable<Event> model = _eventRepository.Get(e => e.IsRejected == false && e.IsApproved == false);
             if (model == null)
             {
                 return NotFound();

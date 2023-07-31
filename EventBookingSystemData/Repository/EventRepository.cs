@@ -48,7 +48,17 @@ namespace EventTicketBookingSystemData.Repository
 
         public List<Event> Get(Expression<Func<Event, bool>>? filter = null, string? includeProperties = null)
         {
-            return _db.Events.ToList();
+            IEnumerable<Event> query;
+            if (filter != null)
+            {
+                query = _db.Events.Where(filter);
+            }
+            else
+            {
+                query = _db.Events;
+            }
+            
+            return query.ToList();
         }
 
            public void Save()

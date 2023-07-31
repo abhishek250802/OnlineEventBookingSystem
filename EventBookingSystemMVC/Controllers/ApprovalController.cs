@@ -54,5 +54,5 @@ namespace EventTicketBookingSystemMVC.Controllers
                 return View("Index");
             }
         } 
-       }
     }
+}

@@ -1,5 +1,5 @@
 body {
-    background: #F4F7FD;
+    background: #17d1bd;
     margin-top: 20px;
 }
 
@@ -21,9 +21,9 @@ body {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #ffffff;
+    background-color: #FFC868;
     background-clip: border-box;
-    border: 1px solid #e6e4e9;
+    border: 1px solid #000000;
     border-radius: 8px;
 }
 

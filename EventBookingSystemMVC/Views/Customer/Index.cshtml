@@ -5,6 +5,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" href="~/css/customer.css">
 
 <h1>CustomerBookingList</h1>
 
@@ -21,7 +22,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.CustomerEmail)
             </th>
-         @*   <th>
+           @* <th>
                 @Html.DisplayNameFor(model => model.Password)
             </th>*@
             <th>
@@ -40,7 +41,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.CustomerEmail)
                 </td>
-              @*  <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.Password)
                 </td>*@
                 <td>
@@ -49,7 +50,12 @@
                 <td>
                     <a asp-controller="Event" asp-action="AddEvent" class="btn btn-outline-primary">Learn More</a>
                 </td>
+
+
+
+
             </tr>
         }
     </tbody>
 </table>
+

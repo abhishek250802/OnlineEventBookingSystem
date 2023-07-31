@@ -1,5 +1,6 @@
 ﻿using EventTicketBookingSystemData.Model;
 using EventTicketBookingSystemData.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineTicketBookingDataAccess.Data;
 
@@ -7,7 +8,10 @@ namespace EventTicketBookingSystemAPI.Controllers
 { 
    // [Route("api/[action]")]
     [Route("api/Approval/[action]")]
+
     [ApiController]
+    
+        
 
     public class AdminController : Controller
     {

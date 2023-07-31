@@ -24,3 +24,32 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+
+
+
+
+/* Add this in your existing CSS file or create a new CSS file and link it in your HTML */
+.footer {
+    padding: 10px;
+}
+
+.footer {
+    position: fixed; /* Use "absolute" if you want the footer at the bottom of the content instead of the viewport */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: #343a40; /* Use the desired background color for the footer */
+    color: #fff; /* Set the font color for the footer text */
+    font-size: 10px;
+    text-align: center;
+}
+
+    .footer .text-center {
+        font-size: 19px;
+        color: white; /* Set the font color for the footer text */
+    }
+
+    

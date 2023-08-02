@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EventTicketBookingSystemData.Migrations
 {
     /// <inheritdoc />
-    public partial class Dummy : Migration
+    public partial class New : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -70,11 +70,13 @@ namespace EventTicketBookingSystemData.Migrations
                 {
                     EventId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EventName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    EventDescription = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    EventName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    EventDescription = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     EventDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AvailableSeats = table.Column<int>(type: "int", nullable: false)
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AvailableSeats = table.Column<int>(type: "int", nullable: true),
+                    IsApproved = table.Column<bool>(type: "bit", nullable: true),
+                    IsRejected = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {

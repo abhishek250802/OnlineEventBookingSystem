@@ -12,8 +12,8 @@ using OnlineTicketBookingDataAccess.Data;
 namespace EventTicketBookingSystemData.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230726125102_Dummy")]
-    partial class Dummy
+    [Migration("20230801143005_New")]
+    partial class New
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,24 +56,27 @@ namespace EventTicketBookingSystemData.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EventId"));
 
-                    b.Property<int>("AvailableSeats")
+                    b.Property<int?>("AvailableSeats")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EventDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("EventDescription")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("EventName")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<bool?>("IsApproved")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsRejected")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Location")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EventId");

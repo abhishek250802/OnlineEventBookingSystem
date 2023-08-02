@@ -1,4 +1,4 @@
-﻿using EventTicketBookingSystemData.Migrations;
+﻿
 using EventTicketBookingSystemData.Model;
 using EventTicketBookingSystemData.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;

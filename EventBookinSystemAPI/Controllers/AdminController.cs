@@ -32,6 +32,10 @@ namespace EventTicketBookingSystemAPI.Controllers
         [HttpGet]
         public IActionResult GetAllApprovalsRejections()
         {
+            try
+            {
+
+            
             IEnumerable<Event> model = _eventRepository.Get(e => e.IsRejected == false && e.IsApproved == false);
             if (model == null)
             {
@@ -39,10 +43,15 @@ namespace EventTicketBookingSystemAPI.Controllers
 
             }
             else
+            
             {
                 return Ok(model);
             }
-
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         [HttpGet]
         public IActionResult ApproveEvent(int id)

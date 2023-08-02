@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EventTicketBookingSystemMVC.Controllers
 {
-   [Authorize]
+  // [Authorize]
     public class EventController : Controller
     {
         private readonly IEventService _eventService;
@@ -30,12 +30,14 @@ namespace EventTicketBookingSystemMVC.Controllers
 
         public IActionResult AddEvent()
         {
+
             return View();
         }
         public async Task<IActionResult> Create(EventViewModel eventViewModel)
         {
           await  _eventService.CreateAsync<APIResponse>(eventViewModel);
             TempData["success"] = "Event created successfully";
+
             return RedirectToAction("Index");
         }
         public IActionResult editpage(int id)

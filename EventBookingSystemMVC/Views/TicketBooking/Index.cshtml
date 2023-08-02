@@ -108,6 +108,12 @@
                     <td>
                         <a type="button" class="btn btn-success" asp-action="Details" asp-route-id="@item.Id" asp-controller="TicketBooking">Details</a>
                     </td>
+                    @if (User.IsInRole(SD.Role_Admin))
+                    {
+                        <td>
+                            <a type="button" class="btn btn-success" asp-action="Delete" asp-route-id="@item.Id" asp-controller="TicketBooking">Delete</a>
+                    </td>
+                    }
                 </tr>
             }
         </tbody>

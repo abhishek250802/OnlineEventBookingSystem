@@ -1,5 +1,7 @@
 ﻿using EventTicketBookingSystemMVC.Models;
 using EventTicketBookingSystemMVC.Service.IService;
+using System.Text;
+using System.Text.Json;
 
 namespace EventTicketBookingSystemMVC.Service
 {
@@ -69,18 +71,29 @@ namespace EventTicketBookingSystemMVC.Service
             });
         }
 
-        public Task<T> UpdateAsync<T>(EventViewModel eventViewModel)
+        //public Task<T> UpdateAsync<T>(EventViewModel eventViewModel)
+        //{
+        //    return SendAsync<T>(new APIRequest()
+        //    {
+        //        Data=eventViewModel,
+        //        Url = TicketBookingUrl + "/api/Event",
+
+        //        ApiType = "Put",
+
+
+        //    });
+        //    //return Task.FromResult(data);
+        //}
+         public Task<T> UpdateAsync<T>(EventViewModel eventViewModel)
         {
+            var jsonContent = new StringContent(JsonSerializer.Serialize(eventViewModel), Encoding.UTF8, "application/json");
+
             return SendAsync<T>(new APIRequest()
             {
-                Data=eventViewModel,
+                Data = jsonContent,
                 Url = TicketBookingUrl + "/api/Event",
-
-                ApiType = "Put",
-
-
+                ApiType = "Put"
             });
-          //  return Task.FromResult(data);
         }
     }
 }

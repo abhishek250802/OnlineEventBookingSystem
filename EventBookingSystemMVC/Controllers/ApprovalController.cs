@@ -23,7 +23,7 @@ namespace EventTicketBookingSystemMVC.Controllers
             var model = await _approvalService.GetUsersAsync();
             return View(model);
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> ApproveEvent(int id)
         {
             try
@@ -39,7 +39,7 @@ namespace EventTicketBookingSystemMVC.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> RejectEvent(int id)
         {
             try

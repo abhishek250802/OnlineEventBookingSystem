@@ -19,10 +19,10 @@
                     <td>@course.EventName</td>
                     <td>@course.EventDescription</td>
                     <td>
-                        <form asp-action="ApproveEvent" method="post">
+                        <form asp-action="ApproveEvent" method="Get">
                             <a asp-action="ApproveEvent" asp-route-id="@course.EventId">Approve</a>
                         </form>
-                        <form asp-action="RejectEvent" method="post">
+                        <form asp-action="RejectEvent" method="Get">
                             <a asp-action="RejectEvent" asp-route-id="@course.EventId">Reject</a>
                         </form>
                     </td>
